@@ -53,7 +53,8 @@ defimpl Scrivener.Paginater, for: Ecto.Query do
       |> exclude(:preload)
       |> exclude(:order_by)
       |> aggregate()
-      |> one(repo, caller, prefix)
+      |> all(repo, caller, prefix)
+      |> length()
 
     total_entries || 0
   end
